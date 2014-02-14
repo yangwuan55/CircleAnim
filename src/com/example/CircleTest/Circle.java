@@ -38,7 +38,7 @@ public class Circle {
     }
 
     public int getX(int angle) {
-        return (int) (radius*Math.cos(Math.toRadians(angle))+centerX)/* - radius*/;
+        return (int) (radius*Math.cos(Math.toRadians(angle))+centerX);
     }
 
     public int getY() {
@@ -47,7 +47,7 @@ public class Circle {
     }
 
     public int getY(int angle) {
-        return (int) (radius*Math.sin(Math.toRadians(angle)) + centerY)/* - radius*/;
+        return (int) (radius*Math.sin(Math.toRadians(angle)) + centerY);
     }
 
 }
