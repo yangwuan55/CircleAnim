@@ -12,6 +12,7 @@ public class CircleAnimContrller {
     public static final String TAG = "CircleAnimContrller";
     View view1;
     View view2;
+    private RotateListener listener;
 
     public CircleAnimContrller(View view1 , View view2) {
         this.view1 = view1;
@@ -51,6 +52,7 @@ public class CircleAnimContrller {
             @Override
             public void onAnimationEnd(Animator animation) {
                 updateViews(circle);
+                listener.onRotateEnd();
 /*                GalleryAppImpl app = (GalleryAppImpl) view1.getContext().getApplicationContext();
                 app.onDoSwitcherEnd();*/
             }
@@ -60,6 +62,7 @@ public class CircleAnimContrller {
         animatorSet.setDuration(1000);
         animatorSet.setInterpolator(new OvershootInterpolator());
         animatorSet.start();
+        listener.onRotateStart();
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -69,4 +72,14 @@ public class CircleAnimContrller {
         view1.setX(circle.getX(circle.getAngle() + 180) - view1.getWidth() / 2);
         view1.setY(circle.getY(circle.getAngle() + 180) - view1.getHeight() / 2);
     }
+
+    public void setRotateListener(RotateListener listener) {
+        this.listener = listener;
+    }
+
+    public interface RotateListener{
+        void onRotateStart();
+        void onRotateEnd();
+    }
+
 }
